@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHHK</title>
+    <style>
+        body {
+            font-family: 'Modern', sans-serif;
+            text-align: center;
+            transition: background-color 0.5s ease;
+        }
+
+        .header {
+            background: url('your-gif-image.gif') no-repeat center center;
+            background-size: cover;
+            height: 5em;
+            width: 8em;
+            mix-blend-mode: screen;
+        }
+    </style>
+</head>
+<body>
+   <center> <div class="header"></div></center>
+    <div class="container">
+        <h1></h1>
+        <p>Who are you?</p>
+        <select id="userType">
+            <option value="artist">Artist</option>
+            <option value="youtuber">YouTuber</option>
+            <option value="business">Business</option>
+        </select>
+        <br><br>
+        <button onclick="redirectToSelectedOption()">Continue</button>
+    </div>
+
+    <script>
+        function redirectToSelectedOption() {
+            const userType = document.getElementById("userType").value;
+            switch (userType) {
+                case "artist":
+                    window.location.href = "artist.html"; // Create an HTML file for the artist option
+                    break;
+                case "youtuber":
+                    window.location.href = "youtuber.html"; // Create an HTML file for the YouTuber option
+                    break;
+                case "business":
+                    window.location.href = "business.html"; // Create an HTML file for the business option
+                    break;
+                default:
+                    alert("Please select an option.");
+            }
+        }
+
+        // JavaScript for changing background color
+        function changeBackgroundColor() {
+            const randomColor = getRandomColor();
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Event listeners for changing background color
+        document.addEventListener("scroll", changeBackgroundColor);
+        document.addEventListener("click", changeBackgroundColor);
+
+        // Change background color on page load/refresh
+        window.addEventListener("load", changeBackgroundColor);
+    </script>
+</body>
+</html>
